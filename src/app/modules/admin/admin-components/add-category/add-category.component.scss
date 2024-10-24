@@ -1,0 +1,75 @@
+.parent {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f2f5; /* Subtle background */
+}
+
+.child {
+  padding: 50px;
+  width: 100%;
+  max-width: 680px;
+  background-color: #fff;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.imgDiv {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.profile-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile {
+  height: 180px;
+  width: 180px;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #e8e8e8;
+}
+
+.upload-label {
+  cursor: pointer;
+}
+
+.upload-input {
+  display: none; /* Hide the input, only show custom button */
+}
+
+.upload-button {
+  margin-top: 10px;
+}
+
+.form-group-row {
+  width: 100%;
+}
+
+.form-input {
+  margin-top: 20px;
+}
+
+textarea {
+  resize: none;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,51 @@
+<div class="parent">
+  <div class="child">
+    <div nz-row class="imgDiv">
+      <h2 style="margin-left: 230px;">Add Category</h2>
+    </div>
+
+    <form nz-form [formGroup]="categoryForm">
+      <div nz-row class="form-group-row">
+        <!-- Image Upload Section -->
+        <div nz-col nzMd="24" nzSm="24" nzXs="24" class="center">
+          <div class="profile-badge">
+            <label for="upload_profile_image" class="upload-label" *ngIf="selectedFile">
+              <img class="profile" [src]="imagePreview" alt="profile" />
+            </label>
+            <input 
+              type="file" 
+              nz-button 
+              nzType="primary" 
+              id="upload_profile_image"
+              accept="image/x-png,image/gif,image/jpeg" 
+              (change)="onFileSelected($event)" 
+              class="upload-input"
+            />
+          </div>
+        </div>
+
+        <!-- Form Inputs -->
+        <div nz-col nzSpan="24" class="form-input">
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+              <input nz-input placeholder="Name" formControlName="name" required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col nzSpan="24" class="form-input">
+          <nz-form-item>
+            <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This input is required!">
+              <textarea rows="3" nz-input placeholder="Description" formControlName="description" required></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div nz-row class="center">
+        <button nz-button class="login-form-button" nzType="primary" (click)="postCategory()">Post</button>
+      </div>
+    </form>
+  </div>
+</div>

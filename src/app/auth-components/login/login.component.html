@@ -1,0 +1,36 @@
+<div class="bg" style="background-color: #F8F8F8;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+      <div class="parent">
+        <div class="child">
+          <div nz-row class="imgDiv">
+            <div nz-col nzSpan="24">
+              <h1 style="margin-left: 100px;">Login</h1>
+            </div>
+          </div>
+  
+          <form nz-form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitForm()">
+            <nz-form-item>
+              <nz-input-group nzPrefixIcon="user">
+                <nz-form-control nzErrorTip="Please input your email!">
+                  <input type="text" nz-input formControlName="email" placeholder="Email" />
+                </nz-form-control>
+              </nz-input-group>
+            </nz-form-item>
+  
+            <nz-form-item>
+              <nz-input-group nzPrefixIcon="lock">
+                <nz-form-control nzErrorTip="Please input your password!">
+                  <input type="password" nz-input formControlName="password" placeholder="Password" />
+                </nz-form-control>
+              </nz-input-group>
+            </nz-form-item>
+  
+            <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Login</button>
+            <br />
+            Or <a routerLink="/signup">register now!</a>
+          </form>
+        </div>
+      </div>
+    </nz-spin>
+  </div>
+  

@@ -1,0 +1,56 @@
+<div style="margin-top: 50px;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2 style="margin-left: 230px;">Post Product</h2> <!-- Matching heading style with Add Category -->
+                </div>
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                    <div nz-row class="form-group-row">
+                        <!-- Image Upload Section -->
+                        <div nz-col nzMd="24" nzSm="24" nzXs="24" class="center">
+                            <div class="profile-badge">
+                                <label for="upload_product_image" class="upload-label" *ngIf="selectedFile">
+                                    <img class="profile" [src]="imagePreview" alt="profile" />
+                                </label>
+                                <input type="file" nz-button nzType="primary" id="upload_product_image"
+                                       accept="image/x-png,image/gif,image/jpeg" 
+                                       (change)="onFileSelected($event)">
+                            </div>
+                        </div>
+
+                        <!-- Form Inputs -->
+                        <div nz-col nzSpan="24" class="form-input">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="Name" formControlName="name" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24" class="form-input">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input type="number" placeholder="Price" formControlName="price" required />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24" class="form-input">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <textarea rows="3" nz-input placeholder="Description" formControlName="description" required></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div nz-row class="center">
+                        <button nz-button class="login-form-button" nzType="primary">Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>
