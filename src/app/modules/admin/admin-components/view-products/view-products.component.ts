@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../admin-services/admin.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -21,7 +21,8 @@ export class ViewProductsComponent {
     private adminService: AdminService,
     private activatedroute: ActivatedRoute,
     private fb: FormBuilder,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +65,7 @@ export class ViewProductsComponent {
 
     this.adminService.getProductsByCategory(this.categoryId).subscribe(
       (res) => {
+        console.log(res);
         res.forEach((element: any) => {
           element.processedImg =
             'data:image/jpeg;base64,' + element.returnedImg; // Fixed string concatenation
@@ -92,4 +94,8 @@ export class ViewProductsComponent {
           console.error('Delete product error: ', error);
         });
     }
+
+    // updateProduct(productId: number): void {
+    //   this.router.navigate([`/admin/product/${productId}`]);
+    // }
 }

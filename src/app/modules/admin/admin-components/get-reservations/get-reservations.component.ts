@@ -14,7 +14,7 @@ export class GetReservationsComponent {
 
   constructor(private service:AdminService, private message:NzMessageService){}
 
-  ngOninit() {
+  ngOnInit() {
     this.getReservationByUser();
   }
 

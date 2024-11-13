@@ -10,12 +10,8 @@
     <div style="margin-top:10px;" class="child" *ngFor="let category of categories">
       <div nz-row>
         <div nz-col nzSpan="8">
-            <img 
-            class="profile" 
-            style="height: 130px; width: 200px; border-radius: 10px;" 
-            [src]="category.processedImg ? 'data:image/jpeg;base64,' + category.processedImg : 'assets/default-placeholder-image.jpg'" 
-            alt="profile"
-          />
+          <img class="profile" style="height: 130px; width: 200px; border-radius: 10px;"
+          [src]="category.processedImg" alt="profile" />
           
         </div>
   

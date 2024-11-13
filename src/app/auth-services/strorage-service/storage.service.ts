@@ -23,13 +23,13 @@ export class StorageService {
     return user ? user.id : ''; // Return empty string if user is null
   }
 
-  saveToken(token: string): void {
+  saveToken(token: string){
     window.localStorage.setItem(TOKEN, token);
     this.updateLoginState(); 
  }
 
 
-  saveUser(user: any): void {
+  saveUser(user: any) {
     window.localStorage.setItem(USER, JSON.stringify(user));
     this.updateLoginState(); 
   }

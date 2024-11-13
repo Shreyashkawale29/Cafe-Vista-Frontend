@@ -15,7 +15,7 @@ export class GetAllReservationsComponent {
 
   constructor(private service:CustomerService){}
 
-  ngOninit() {
+  ngOnInit(): void {
     this.getReservationByUser();
   }
 

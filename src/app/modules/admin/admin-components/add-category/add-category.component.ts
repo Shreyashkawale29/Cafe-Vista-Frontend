@@ -11,8 +11,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class AddCategoryComponent implements OnInit {
 
   categoryForm: FormGroup;
-  selectedFile: File | null = null;
-  imagePreview: String | ArrayBuffer | null = null;
+  selectedFile: File;
+  imagePreview: String | ArrayBuffer;
 
   constructor(
     private service: AdminService,
@@ -20,25 +20,25 @@ export class AddCategoryComponent implements OnInit {
     private message: NzMessageService
   ) {}
 
-  // Correct lifecycle hook name
+  
   ngOnInit(): void {
-    // Initialize the form with FormBuilder
+    
     this.categoryForm = this.fb.group({
       name: [null, Validators.required],
       description: [null, Validators.required],
     });
   }
 
-  postCategory(): void {
+  postCategory(){
     console.log(this.categoryForm.value);
     const formdata: FormData = new FormData();
     
     if (this.selectedFile) {
-      formdata.append('img', this.selectedFile);
+      formdata.append("img", this.selectedFile);
     }
     
-    formdata.append('name', this.categoryForm.get('name').value);
-    formdata.append('description', this.categoryForm.get('description').value);
+    formdata.append('name', this.categoryForm.get('name').value)
+    formdata.append('description', this.categoryForm.get('description').value)
 
     this.service.postCategory(formdata).subscribe(
       (res) => {
@@ -52,12 +52,12 @@ export class AddCategoryComponent implements OnInit {
     );
   }
 
-  onFileSelected(event: any): void {
+  onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     this.previewImage();
   }
 
-  previewImage(): void {
+  previewImage() {
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result;

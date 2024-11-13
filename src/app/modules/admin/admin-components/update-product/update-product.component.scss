@@ -1,5 +1,4 @@
 .parent {
-    /* Center the content vertically and horizontally */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,13 +6,12 @@
 }
 
 .child {
-    /* Add padding and background color */
     padding: 20px;
-    background-color: #f7f7f7;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
+    width: 780px; // Match the width of the first template
+    background-color: white; // Use a white background for consistency
+    box-shadow: 1px 1px 15px 7px rgba(0, 0, 0, 0.1); // Match box shadow
+    border-radius: 5px; // Consistent border radius
+    margin: auto;
 }
 
 .imgDiv {
@@ -33,6 +31,8 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    font-size: 16px;
+    color: #108ee9; // Matches color from previous template
 }
 
 input[type="file"] {
@@ -41,7 +41,6 @@ input[type="file"] {
 
 .image-preview {
     margin-top: 10px;
-    margin-left: 100px;
 }
 
 .circle-image {
@@ -62,8 +61,22 @@ input[type="file"] {
 
 nz-form-item {
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .login-form-button {
     width: 100%;
+    margin-top: 20px; // Add top margin for spacing consistency
+}
+
+button[nz-button] {
+    background-color: #108ee9;
+    border-color: #108ee9;
+    color: white;
+    transition: all 0.3s;
+    
+    &:hover {
+        background-color: #0b7cb8;
+        border-color: #0b7cb8;
+    }
 }

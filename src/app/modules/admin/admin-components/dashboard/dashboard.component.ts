@@ -10,6 +10,7 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
 })
 export class DashboardComponent {
   categories: any[] = [];
+  
   validateForm!: FormGroup;
   size: NzButtonSize = 'large';
   isSpinning: boolean = false;
@@ -58,19 +59,13 @@ export class DashboardComponent {
     this.adminService.getAllCategory().subscribe({
       next: (res) => {
         res.forEach((element: any) => {
-          // Check if returnedImg is defined before processing
-          if (element.returnedImg) {
-            element.processedImg = 'data:image/jpeg;base64,' + element.returnedImg;
-          } else {
-            // Use a default placeholder image or leave it null
-            element.processedImg = 'assets/default-placeholder-image.jpg'; // or handle however you prefer
-          }
+          element.processedImg = 'data:image/jpeg;base64,' + element.returnedImg;
           this.categories.push(element);
         });
       },
       error: (err) => {
         console.error('Error fetching categories', err);
-      },
+      }
     });
   }
   

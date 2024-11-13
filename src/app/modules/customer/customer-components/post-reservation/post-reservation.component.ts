@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../../customer-service/customer.service';
-import { NzNotificationComponent } from 'ng-zorro-antd/notification';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
@@ -9,7 +8,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './post-reservation.component.html',
   styleUrls: ['./post-reservation.component.scss'],
 })
-export class PostReservationComponent implements OnInit {  // Implements OnInit
+export class PostReservationComponent implements OnInit {  
   isSpinning: boolean = false;
   validateForm: FormGroup;
 
@@ -32,9 +31,12 @@ export class PostReservationComponent implements OnInit {  // Implements OnInit
     'Custom Table',
   ];
 
-  constructor(private fb: FormBuilder, private service: CustomerService, private message:NzMessageService) {}
+  constructor(
+    private fb: FormBuilder, 
+    private service: CustomerService, 
+    private message: NzMessageService
+  ) {}
 
-  // Fixing the method name to ngOnInit
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       tableType: [null, Validators.required],
@@ -45,17 +47,24 @@ export class PostReservationComponent implements OnInit {  // Implements OnInit
 
   postReservation() {
     if (this.validateForm.valid) {
-      console.log(this.validateForm.value);
-      this.service.postReservation(this.validateForm.value).subscribe((res) => {
-        console.log(res);
-        if(res.id!=null) {
-          this.message.success("Reservation posted successfully", {nzDuration:5000})
-        }
-        else{
-          this.message.success("Something went wrong", {nzDuration:5000})
+      console.log("Form Values before submission:", this.validateForm.value);
 
+      this.service.postReservation(this.validateForm.value).subscribe(
+        (res) => {
+          console.log("Response from API:", res);
+          if (res.id != null) {
+            this.message.success("Reservation posted successfully", { nzDuration: 5000 });
+          } else {
+            this.message.error("Something went wrong", { nzDuration: 5000 });
+          }
+        },
+        (error) => {
+          console.error("Error posting reservation:", error);
+          this.message.error("Failed to post reservation", { nzDuration: 5000 });
         }
-      });
+      );
+    } else {
+      this.message.error("Please complete the form before submitting", { nzDuration: 5000 });
     }
   }
 }

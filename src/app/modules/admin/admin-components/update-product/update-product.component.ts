@@ -78,26 +78,27 @@ export class UpdateProductComponent {
   updateProduct(){
     const formData: FormData = new FormData();
 
-// Check if the image has changed and append the file if available
+
 if (this.imgChanged && this.selectedFile) {
   formData.append('img', this.selectedFile);
 }
 
-// Append other form data (name, price, description)
+
 formData.append('name', this.validateForm.get('name')!.value);
 formData.append('price', this.validateForm.get('price')!.value);
 formData.append('description', this.validateForm.get('description')!.value);
 
-console.log(formData);  // Debugging formData
+console.log(formData);  
 
-// Call the service to update the product
+
 this.adminService.updateProduct(this.productId, formData).subscribe((res) => {
+  console.log(res);
   this.isSpinning = false;  // Stop the loading spinner
 
-  // Check if the response contains a valid product ID
+  
   if (res.id != null) {
     this.message.success('Product updated successfully.', { nzDuration: 5000 });
-    this.router.navigateByUrl('/admin/dashboard');  // Redirect to dashboard after success
+    this.router.navigateByUrl('/admin/dashboard');  
   } else {
     this.message.error('Something went wrong.', { nzDuration: 5000 });
   }

@@ -7,12 +7,8 @@
   </button>
 </form>
 
-
-
-
-
 <div style="background-color: #F8F8F8; min-height: 91vh; padding-top: 10px;">
-    <div *ngFor="let product of Products" style="margin-top: 10px;">
+    <div *ngFor="let product of Products" class="child" style="margin-top: 10px;">
       <div nz-row>
         <div nz-col nzSpan="8">
           <img class="profile" 
@@ -34,7 +30,7 @@
           <hr>
           <div style="float: right;">
             <button nzSize="small" nz-button nzType="primary" 
-                    [routerLink]="'/admin/edit_product/' + product.id">
+                    [routerLink]="'/admin/product/' + product.id">
               Update
             </button>
             <button nzSize="small" nz-button nzType="primary" nzDanger 
@@ -47,4 +43,3 @@
       </div>
     </div>
   </div>
-  
